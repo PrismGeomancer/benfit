@@ -1,0 +1,46 @@
+# Hourly: read holders, record fee claims, refresh the market cache, commit /data.
+# Read-only on chain. No signing key exists in CI; payday.ts is never run here.
+name: snapshot
+
+on:
+  schedule:
+    - cron: '7 * * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: snapshot
+  cancel-in-progress: false
+
+jobs:
+  snapshot:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+      - run: npm ci
+      - name: Holders
+        run: npm run snapshot
+        env:
+          # Read-only RPC URL (Helius recommended for getTokenAccounts). A repository secret, not a signing key.
+          HELIUS_RPC_URL: ${{ secrets.HELIUS_RPC_URL }}
+      - name: Fee claims
+        run: npm run fees
+        env:
+          HELIUS_RPC_URL: ${{ secrets.HELIUS_RPC_URL }}
+      - name: Market cache
+        run: npm run market:cache
+        continue-on-error: true
+      - name: Commit data
+        run: |
+          git config user.name "benfit-snapshot"
+          git config user.email "actions@users.noreply.github.com"
+          git add data
+          git diff --cached --quiet || git commit -m "data: snapshot $(date -u +%Y-%m-%dT%H:%MZ)"
+          git push

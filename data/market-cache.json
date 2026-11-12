@@ -1,0 +1,236 @@
+{
+  "fetchedAt": "2026-11-12T17:19:14.502Z",
+  "rows": [
+    {
+      "mint": "7GM6DTUa3q9V2Dv6efRuGhrvW4aDz6Gk2GAgoC4AUTd9",
+      "name": "predict.fun",
+      "symbol": "PREDICT",
+      "imageUrl": null,
+      "pairAddress": "45TyLZB8nrMaAQDkE7qodQfxGrSFmvmyNozD7dQEHVGP",
+      "dexId": "pumpswap",
+      "quoteSymbol": "SOL",
+      "priceUsd": 0.00004803,
+      "change24": 295,
+      "marketCap": 4803679,
+      "volume24": 76155533.07,
+      "liquidityUsd": 157579.38,
+      "spark": [
+        0.000018081447702404763,
+        0.000048114949794913414
+      ]
+    },
+    {
+      "mint": "5qaP7oKUqKffwwo5DaEqDoTtsBLMpdbQTxEkCDaTpump",
+      "name": "Max coin",
+      "symbol": "Max",
+      "imageUrl": "https://cdn.dexscreener.com/cms/images/Knd3jMje1qJdHDBV?width=800&height=800&quality=95&format=auto",
+      "pairAddress": "Eoe22HdCa9rhtBwKL6nNZmZxfuzF35xkxobcvfaF1vWQ",
+      "dexId": "pumpswap",
+      "quoteSymbol": "SOL",
+      "priceUsd": 0.001775,
+      "change24": 4693,
+      "marketCap": 1771518,
+      "volume24": 55814579.33,
+      "liquidityUsd": 171809.69,
+      "spark": [
+        0.004657008182664776,
+        0.0017641045671473276
+      ]
+    },
+    {
+      "mint": "4CxjZyMNoF1p6eXHXHv1TWpS2X47CuUmLwtGe18spump",
+      "name": "ni hao cat",
+      "symbol": "mihao",
+      "imageUrl": "https://cdn.dexscreener.com/cms/images/CN2GXn9xCwxqB6AH?width=800&height=800&quality=95&format=auto",
+      "pairAddress": "Ho1aSG6WGH1FfXdEHrK2f4Ggt1Hoxo9s5jcLMDqeyeBz",
+      "dexId": "pumpswap",
+      "quoteSymbol": "SOL",
+      "priceUsd": 0.01384,
+      "change24": -38.54,
+      "marketCap": 13028945,
+      "volume24": 13963367.78,
+      "liquidityUsd": 404284.58,
+      "spark": [
+        0.0005191536355625551,
+        0.0004474004882796739,
+        0.0004409761725076107,
+        0.0004994152687692466,
+        0.014165894982486825,
+        0.017774381609345226,
+        0.014084856460099979
+      ]
+    },
+    {
+      "mint": "7EoJEnMQNsSGMUkJ7zaKSPMqNr2P3xJeVdGnerqcnrXw",
+      "name": "Giraffies",
+      "symbol": "GIRAFF",
+      "imageUrl": null,
+      "pairAddress": "F46yMwvz98cYM7CEG5KBKbwJqpuaA75icWxRFudRC471",
+      "dexId": "pumpswap",
+      "quoteSymbol": "SOL",
+      "priceUsd": 0.0000529,
+      "change24": 578,
+      "marketCap": 52902,
+      "volume24": 5730113.85,
+      "liquidityUsd": 55810.85,
+      "spark": [
+        0.00005245731564052429
+      ]
+    },
+    {
+      "mint": "PcGxcarQrER7HkKtSkPmxZk2mKaik27YMbhDNT7CfFa",
+      "name": "Jensen Huang",
+      "symbol": "Huang",
+      "imageUrl": null,
+      "pairAddress": "8Sq44NJgS8agMdTCyQm2WVTYjjEZiHs4MNRwgAWPUGj3",
+      "dexId": "pumpswap",
+      "quoteSymbol": "SOL",
+      "priceUsd": 0.00008426,
+      "change24": 81.06,
+      "marketCap": 84262,
+      "volume24": 4107083.7,
+      "liquidityUsd": 133286.03,
+      "spark": [
+        0.00008469747492900994
+      ]
+    },
+    {
+      "mint": "6GmAFSYs4gk3FDao5FzzySQpPZaWsa4rUJHacpMpUNgx",
+      "name": "STONK",
+      "symbol": "STONK",
+      "imageUrl": "https://cdn.dexscreener.com/cms/images/bJ1wrZe7IYIknT9a?width=800&height=800&quality=95&format=auto",
+      "pairAddress": "zxTpi4BtaWX3mgdAPoezkMD1hxx8CdeCfrqXMWvSCLX",
+      "dexId": "meteora",
+      "quoteSymbol": "SOL",
+      "priceUsd": 0.04158,
+      "change24": -17.18,
+      "marketCap": 32266500,
+      "volume24": 3382535.59,
+      "liquidityUsd": 1916964.25,
+      "spark": [
+        0.10221992498219512,
+        0.06976016456518233,
+        0.044405133424846276,
+        0.052107910876525186,
+        0.05143411092917499,
+        0.045402371430892347,
+        0.04154025472385307
+      ]
+    },
+    {
+      "mint": "KMifrkYmDdAKtVXAVBEPEQxJ7qP2iLgUcfZjUZipump",
+      "name": "RAMBO",
+      "symbol": "RAMBO",
+      "imageUrl": "https://cdn.dexscreener.com/cms/images/XISzZm6eem7k59zw?width=800&height=800&quality=95&format=auto",
+      "pairAddress": "Gz15vwSPY9KFYNkrMPkoKp2h9yygVBovoXJsGwSJcvFk",
+      "dexId": "pumpswap",
+      "quoteSymbol": "SOL",
+      "priceUsd": 0.01163,
+      "change24": 112,
+      "marketCap": 11469262,
+      "volume24": 3444668.52,
+      "liquidityUsd": 294866.03,
+      "spark": [
+        0.006775007350367392,
+        0.00694246545424584,
+        0.008422795758229703,
+        0.004493603839380279,
+        0.005120980092854178,
+        0.006098069527649564,
+        0.011441097540740594
+      ]
+    },
+    {
+      "mint": "pumpCmXqMfrsAkQ5r49WcJnRayYRqmXz6ae8H7H9Dfn",
+      "name": "Pump",
+      "symbol": "PUMP",
+      "imageUrl": "https://cdn.dexscreener.com/cms/images/a0d07b12d0c34be414b8ac98a827ff862cfd684554c8da4c63fa647eef0af501?width=800&height=800&quality=95&format=auto",
+      "pairAddress": "BofA2ViUSudPBTUms2KRuG6AHNeMawjNfwqTJDgx5BKW",
+      "dexId": "orca",
+      "quoteSymbol": "SOL",
+      "priceUsd": 0.003356,
+      "change24": -7.21,
+      "marketCap": 1538141627,
+      "volume24": 2954210.94,
+      "liquidityUsd": 2169787.29,
+      "spark": [
+        0.0039070322646668565,
+        0.0037168490584631782,
+        0.0035193468776649724,
+        0.003622953358801892,
+        0.003506870976972671,
+        0.003466479278055573,
+        0.003366650812179626
+      ]
+    },
+    {
+      "mint": "6p6xgHyF7AeE6TZkSmFsko444wqoP15icUSqi2jfGiPN",
+      "name": "OFFICIAL TRUMP",
+      "symbol": "TRUMP",
+      "imageUrl": "https://cdn.dexscreener.com/cms/images/85a2613c51c8ded8e51b1b3910487ab66691cb60fecec7d0905481a603bba899?width=800&height=800&quality=95&format=auto",
+      "pairAddress": "Ckp1kwZqosaLU1h3zWtuaMBubyWM7LX3cxYezRVin7p2",
+      "dexId": "orca",
+      "quoteSymbol": "SOL",
+      "priceUsd": 1.088,
+      "change24": -6.01,
+      "marketCap": 306777284,
+      "volume24": 210787.1,
+      "liquidityUsd": 143666.4,
+      "spark": [
+        1.2026995124469977,
+        1.1870748210745588,
+        1.1331034304427159,
+        1.1202113731711125,
+        1.143037931116817,
+        1.124238249156312,
+        1.0926935554139356
+      ]
+    },
+    {
+      "mint": "Bv1a7cEj5aRnJQhMw4kRQqAFesMSd5LwcDnUzq52BMmr",
+      "name": "FLOAT",
+      "symbol": "FLOAT",
+      "imageUrl": "https://cdn.dexscreener.com/cms/images/GcjeczTah2v57O9h?width=800&height=800&quality=95&format=auto",
+      "pairAddress": "FJk9sajdc2Q4heRPPu3yLzkmf2ZByZkpiHQLv9e2bn5A",
+      "dexId": "raydium",
+      "quoteSymbol": "SOL",
+      "priceUsd": 0.003488,
+      "change24": -68.5,
+      "marketCap": 3484797,
+      "volume24": 2645833.73,
+      "liquidityUsd": 344270.08,
+      "spark": [
+        0.006478516358595622,
+        0.01140572721006193,
+        0.013788290647214537,
+        0.009055065417078014,
+        0.007699258727502242,
+        0.003745151071306432,
+        0.003549420301202502
+      ]
+    },
+    {
+      "mint": "CGEDT9QZDvvH5GmVkWJH2BXiMJqMJySC9ihWyr7Spump",
+      "name": "Burnie Senders",
+      "symbol": "BURNIE",
+      "imageUrl": "https://cdn.dexscreener.com/cms/images/7TlTkQLRcg92oYfR?width=800&height=800&quality=95&format=auto",
+      "pairAddress": "5tYFviFWQRKV9BJSTHGitbdqEYC1BGUgRUDnSADUXqJP",
+      "dexId": "pumpswap",
+      "quoteSymbol": "SOL",
+      "priceUsd": 0.0006307,
+      "change24": 91.08,
+      "marketCap": 591563,
+      "volume24": 2271369.16,
+      "liquidityUsd": 146431.39,
+      "spark": [
+        0.0005118592347422231,
+        0.00046547429741902854,
+        0.0004007885244753056,
+        0.0003890134990327113,
+        0.00036180963858144287,
+        0.0008574635821642963,
+        0.0006390155455016373
+      ]
+    }
+  ]
+}

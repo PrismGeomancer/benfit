@@ -1,0 +1,12 @@
+node_modules
+dist
+test-results
+playwright-report
+.env
+*.keypair.json
+keys/
+.localnet
+.env.localnet
+dist-localnet
+data/localnet/
+data/devnet/

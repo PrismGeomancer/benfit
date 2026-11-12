@@ -1,0 +1,50 @@
+{
+  "name": "benfit",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview",
+    "test": "vitest run",
+    "smoke": "playwright test",
+    "watchlist:refresh": "tsx scripts/watchlist.ts",
+    "market:cache": "tsx scripts/market-cache.ts",
+    "snapshot": "tsx scripts/snapshot.ts",
+    "fees": "tsx scripts/fees.ts",
+    "payday": "tsx scripts/payday.ts",
+    "dbc:config": "tsx scripts/create-config.ts",
+    "launch:cost": "tsx scripts/launch-cost.ts",
+    "localnet:validator": "solana-test-validator --reset --quiet --ledger .localnet/ledger --url https://api.mainnet-beta.solana.com --clone-upgradeable-program dbcij3LWUppWqq96dh6gJWwBifmcGfLSB5D4DuSMaqN --clone-upgradeable-program metaqbxxUerdq28cj1RbAWkYQm3ybzjb6a8bt518x1s",
+    "localnet:upload": "tsx scripts/upload-server.ts",
+    "localnet:setup": "NETWORK=localnet tsx scripts/localnet.ts setup",
+    "localnet:story": "NETWORK=localnet tsx scripts/localnet.ts story",
+    "localnet:dev": "vite --mode localnet",
+    "localnet:build": "vite build --mode localnet --outDir dist-localnet",
+    "smoke:localnet": "playwright test -c playwright.localnet.config.ts",
+    "verify:routing": "tsx scripts/verify-routing.ts",
+    "wallet:new": "tsx scripts/new-payroll-wallet.ts"
+  },
+  "dependencies": {
+    "@fontsource/schibsted-grotesk": "^5.3.0",
+    "@meteora-ag/dynamic-bonding-curve-sdk": "^2.0.0",
+    "@solana/web3.js": "^1.99.0",
+    "@wallet-standard/app": "^1.1.0",
+    "bn.js": "^5.2.5",
+    "bs58": "^6.0.0",
+    "buffer": "^6.0.3",
+    "gsap": "^3.15.1"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.65.0",
+    "@types/bn.js": "^5.2.0",
+    "@types/node": "^26.6.6",
+    "@wallet-standard/base": "^1.1.0",
+    "tsx": "^4.23.15",
+    "tweetnacl": "^1.0.3",
+    "typescript": "^5.9.3",
+    "vite": "^6.4.6",
+    "vitest": "^4.1.12"
+  }
+}
