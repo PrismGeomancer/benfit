@@ -78,7 +78,7 @@ const net = networks[network];
 
 export const config = {
   network,
-  x_url: '',
+  x_url: 'https://x.com/Spinoff_project',
   telegram_url: '',
   repo_url: 'https://github.com/PrismGeomancer/benfit',
   // GitHub Pages address; becomes live after the first deploy workflow run.
