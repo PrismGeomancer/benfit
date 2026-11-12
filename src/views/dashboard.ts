@@ -197,10 +197,16 @@ function mountPayday(host: HTMLElement) {
     text.split('').forEach((c, i) => {
       if (prev[i] === c) return;
       const cell = cells[i];
-      const old = cell.firstElementChild as HTMLElement;
+      // Keep exactly one digit per cell: finish and drop anything still rolling out. Background
+      // tabs pause animation frames while this interval keeps ticking, which used to stack digits.
+      const spans = Array.from(cell.children) as HTMLElement[];
+      gsap.killTweensOf(spans);
+      const old = spans.pop()!;
+      spans.forEach((s) => s.remove());
+      gsap.set(old, { yPercent: 0 });
       const next = h(`<span>${c}</span>`);
       cell.append(next);
-      if (reduced()) {
+      if (reduced() || document.hidden) {
         old.remove();
         return;
       }

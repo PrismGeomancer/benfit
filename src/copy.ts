@@ -30,7 +30,7 @@ export const copy = {
     sub: 'Trading fees go to the people who hold, weighted by how long they have held. Sell and your clock restarts.',
     payday: {
       label: 'Next payday',
-      value: 'Friday 16:00',
+      value: 'Friday 21:00',
       tz: 'Stockholm time',
       yourTime: 'your time: {local}',
       units: { d: 'd', h: 'h', m: 'm', s: 's' },
@@ -178,7 +178,7 @@ export const copy = {
     docsLede: 'Everything BENFIT does is public. This is how each part works and where to check it.',
     faq: [
       ['What is BENFIT?', "A launchpad on Solana. Every coin launched on it sends its fee share to a payroll wallet, and every Friday that pool is paid to the coin's holders in SOL, weighted by how long each wallet has held."],
-      ['How do I get paid?', 'Hold at least 100,000 tokens of a coin launched on BENFIT. There is nothing to sign up for. Payroll is sent after Friday 16:00 Stockholm time to the wallet that holds the tokens.'],
+      ['How do I get paid?', 'Hold at least 100,000 tokens of a coin launched on BENFIT. There is nothing to sign up for. Payroll is sent after Friday 21:00 Stockholm time to the wallet that holds the tokens.'],
       ['How are my points counted?', 'Tokens counted times days since your last sell or transfer out. 10M tokens held for 30 days is 300M points. Your share of the week’s pool is your points divided by everyone’s points.'],
       ['What resets my days?', 'Any lower balance between two hourly snapshots: a sell, a transfer to another wallet, or a deposit to an exchange. Buying more does not reset your days.'],
       ['I moved tokens between my own wallets. Does that count as a sell?', 'Yes. The snapshot sees a lower balance and cannot know who owns the other wallet. Keep tokens in one wallet to keep your days.'],
@@ -212,8 +212,8 @@ export const copy = {
         body: [
           'Every hour: holders of every BENFIT coin are read from chain and compared with the last snapshot.',
           'During the week: the coin’s fee share is claimed into the payroll wallet. Each claim is recorded against the coin it came from.',
-          'Friday 16:00 Stockholm time: the pool for each coin is the fees claimed since the last payday plus any dust carried over. Shares are worked out and a dry run is checked.',
-          'After 16:00: SOL is sent in batches of about 20 wallets per transaction. The run is posted in the Service book with every transaction.',
+          'Friday 21:00 Stockholm time: the pool for each coin is the fees claimed since the last payday plus any dust carried over. Shares are worked out and a dry run is checked.',
+          'After 21:00: SOL is sent in batches of about 20 wallets per transaction. The run is posted in the Service book with every transaction.',
         ],
       },
       {

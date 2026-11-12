@@ -140,3 +140,13 @@ describe('payday time', () => {
     expect(nextPayday(new Date('2026-11-13T15:00:01Z'), conf).toISOString()).toBe('2026-11-20T15:00:00.000Z');
   });
 });
+
+describe('payday at 21:00 Stockholm', () => {
+  const conf = { weekday: 5, time: '21:00', tz: 'Europe/Stockholm' };
+  it('next payday from Thu 12 Nov 2026 is Fri 13 Nov 21:00 Stockholm (20:00 UTC)', () => {
+    expect(nextPayday(new Date('2026-11-12T18:00:00Z'), conf).toISOString()).toBe('2026-11-13T20:00:00.000Z');
+  });
+  it('Friday afternoon still counts down to the same evening', () => {
+    expect(nextPayday(new Date('2026-11-13T15:30:00Z'), conf).toISOString()).toBe('2026-11-13T20:00:00.000Z');
+  });
+});

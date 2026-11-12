@@ -103,7 +103,7 @@ export const config = {
   dust_sol: 0.001,
   tenure_cap_days: null as number | null,
 
-  payday: { weekday: 5, time: '16:00', tz: 'Europe/Stockholm' },
+  payday: { weekday: 5, time: '21:00', tz: 'Europe/Stockholm' },
 
   // Launch cost in SOL. Shown only when verified.launchCost is true.
   launch_cost_sol: env('LAUNCH_COST_SOL') ? Number(env('LAUNCH_COST_SOL')) : net.launch_cost_sol,

@@ -23,7 +23,7 @@ const confirm = process.argv.includes('--confirm');
 const BATCH = 20; // recipients per transaction
 // PAYDAY_AS_OF (test networks only) runs the payday that falls before that time.
 const now = clock('PAYDAY_AS_OF');
-// Run on Friday after 16:00 Stockholm: the payday is the one that just passed.
+// Run on Friday after 21:00 Stockholm: the payday is the one that just passed.
 const payday = previousPayday(now, config.payday);
 const period = ymd(payday, config.payday.tz);
 if (nextPayday(new Date(payday.getTime() - 1), config.payday).getTime() !== payday.getTime()) throw new Error('payday calc');

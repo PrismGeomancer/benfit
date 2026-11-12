@@ -2,7 +2,7 @@
 
 A Solana launchpad where a coin's fees are paid to its holders every Friday, weighted by how long they have held.
 
-**The rule.** Points = tokens counted × days since the wallet's last sell or transfer out (buying more does not reset days). A wallet counts at most 1% of supply and needs 100,000 tokens to be on payroll. Payday is Friday 16:00 Europe/Stockholm. Each wallet gets pool × points ÷ total points; a share under 0.001 SOL rolls into next week. All of these are values in `src/config.ts`, and the code lives in `src/lib/rule.ts` and `src/lib/state.ts`.
+**The rule.** Points = tokens counted × days since the wallet's last sell or transfer out (buying more does not reset days). A wallet counts at most 1% of supply and needs 100,000 tokens to be on payroll. Payday is Friday 21:00 Europe/Stockholm. Each wallet gets pool × points ÷ total points; a share under 0.001 SOL rolls into next week. All of these are values in `src/config.ts`, and the code lives in `src/lib/rule.ts` and `src/lib/state.ts`.
 
 Static site (Vite + TypeScript, vanilla DOM, GSAP), hash routing, `base: './'` for a GitHub Pages subpath. There is no server and no database: scripts write JSON to `/data`, and the site reads it.
 
@@ -67,7 +67,7 @@ npm run payday                                   # DRY RUN: prints the table, se
 PAYROLL_KEYPAIR=~/keys/payroll.json npm run payday -- --confirm
 git add data/payroll && git commit -m "payroll <date>" && git push
 ```
-`payday.ts` refuses to send without `--confirm`, refuses a key that is not `config.payroll_wallet`, refuses when the wallet holds less than is owed, refuses a period that already has a run, and writes the run file after every batch so no signature is lost. Run it after Friday 16:00 Stockholm; it pays the payday that just passed.
+`payday.ts` refuses to send without `--confirm`, refuses a key that is not `config.payroll_wallet`, refuses when the wallet holds less than is owed, refuses a period that already has a run, and writes the run file after every batch so no signature is lost. Run it after Friday 21:00 Stockholm; it pays the payday that just passed.
 
 ## Refreshing the watchlist
 

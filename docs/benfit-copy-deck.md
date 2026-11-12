@@ -53,7 +53,7 @@ Sub line (one sentence, max 2 lines):
 
 Payday strip
 - Label: `Next payday`
-- Value: `Friday 16:00` + small `Stockholm time` (and `your time: {local}` when different)
+- Value: `Friday 21:00` + small `Stockholm time` (and `your time: {local}` when different)
 - Countdown units: `d` `h` `m` `s`
 - Next to countdown: `Pool this week` + SOL value
 - Link: `How the pool is shared` (scrolls to How it works)

@@ -7,7 +7,7 @@ You are building the website and MVP for **BENFIT ($BENFIT)**, a Solana launchpa
 **The rule, exactly:**
 - Points = tokens counted × days since the wallet's last sell or transfer out. Buying more does not reset days.
 - A wallet counts at most 1% of supply. A wallet needs at least 100,000 tokens to be on payroll. (Both are config values.)
-- Payday is Friday 16:00 Europe/Stockholm. The pool for a coin is the creator fees collected for it since the last payday, plus carried-over dust.
+- Payday is Friday 21:00 Europe/Stockholm. The pool for a coin is the creator fees collected for it since the last payday, plus carried-over dust.
 - A wallet's share = pool × its points ÷ total points. A share under 0.001 SOL (config) rolls into next week's pool.
 - Fee split per coin: 100% payroll, 0% creator, 0% BENFIT. **Only claim this after gate 1 below passes.**
 - Worked example the tests must reproduce: pool 20 SOL; Ana 10M × 30d = 300M, Ben 5M × 30d = 150M, Cy 10M × 10d = 100M; total 550M → 10.91 / 5.45 / 3.64 SOL.
@@ -22,7 +22,7 @@ All user-facing strings come from `benfit-copy-deck.md`. Put them in `src/copy.t
 
 **Routes (hash):** `#/` dashboard (default) · `#/payroll` · `#/statement` · `#/book` · `#/how` · `#/launch` · `#/coin/<mint>`.
 
-**Config.** One `src/config.ts` object: `site_url`, `x_url`, `telegram_url`, `repo_url`, `benfit_ca`, `rpc_url`, `fee_rate`, `wallet_cap_pct` (1), `min_tokens` (100000), `dust_sol` (0.001), `tenure_cap_days` (null), `payday: { weekday: 5, time: '16:00', tz: 'Europe/Stockholm' }`, `verified: { feeRouting: false, launchCost: false }`. Any empty URL or address hides its element. No secrets in the repo; the RPC key is a restricted, domain-allowlisted key, or the public RPC.
+**Config.** One `src/config.ts` object: `site_url`, `x_url`, `telegram_url`, `repo_url`, `benfit_ca`, `rpc_url`, `fee_rate`, `wallet_cap_pct` (1), `min_tokens` (100000), `dust_sol` (0.001), `tenure_cap_days` (null), `payday: { weekday: 5, time: '21:00', tz: 'Europe/Stockholm' }`, `verified: { feeRouting: false, launchCost: false }`. Any empty URL or address hides its element. No secrets in the repo; the RPC key is a restricted, domain-allowlisted key, or the public RPC.
 
 **Data contracts (all JSON in `/data`, read by the site, written by scripts):**
 - `data/watchlist.json`: `[{ "mint": "..." }]`. Market-view coins. Built by `npm run watchlist:refresh`, which asks the DexScreener API for top Solana pairs by 24h volume above a liquidity floor and writes the mints it returns. **Never type a mint address from memory.** The owner may also paste mints from Axiom into this file.
@@ -68,7 +68,7 @@ All user-facing strings come from `benfit-copy-deck.md`. Put them in `src/copy.t
 │ BENFIT  Coins Payroll My statement Service book How it works   [Connect] [Launch a coin] │
 ├──────────────────────────────────────────────────────────────────────────┤
 │ Every coin pays its holders a benefit.            ┌ Next payday ────────┐ │
-│ Trading fees go to the people who hold…           │ Friday 16:00        │ │
+│ Trading fees go to the people who hold…           │ Friday 21:00        │ │
 │                                                   │ 2d 21h 14m 08s     │ │
 │                                                   │ Pool this week  X   │ │
 │                                                   └─────────────────────┘ │
