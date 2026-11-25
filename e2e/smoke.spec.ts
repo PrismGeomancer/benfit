@@ -36,14 +36,21 @@ test('every route renders without banned words or console errors', async ({ page
   expect(errors).toEqual([]);
 });
 
-test('Try the rule reproduces the worked example', async ({ page }) => {
+test('Current holders lists real wallets and switches coin', async ({ page }) => {
   await page.goto('./#/');
-  const cells = page.locator('.rule-card tbody tr td:last-child');
-  await expect(cells).toHaveText(['10.91 SOL', '5.45 SOL', '3.64 SOL']);
-  await page.fill('input[name=tokens]', '10');
-  await page.fill('input[name=days]', '30');
-  await expect(page.locator('.rule-card .result')).toContainText('300M points');
-  await expect(page.locator('.slip-line.total')).toBeVisible();
+  await page.waitForSelector('tr.row');
+  const rows = page.locator('.holders-t tbody tr');
+  await expect(rows.first().locator('a')).toBeVisible({ timeout: 20_000 });
+  expect(await rows.count()).toBeGreaterThanOrEqual(3);
+  const first = await rows.first().locator('a').innerText();
+  // Share of supply column, in percent, descending.
+  const pcts = (await page.locator('.holders-t tbody tr td:last-child').allInnerTexts()).map((x) => parseFloat(x));
+  expect(pcts.every((n) => n > 0 && n < 100)).toBe(true);
+  expect([...pcts].sort((a, b) => b - a)).toEqual(pcts);
+  await page.locator('.holders select').selectOption({ index: 2 });
+  await expect(page.locator('.holders-t tbody tr').first().locator('a')).not.toHaveText(first, { timeout: 20_000 });
+  await expect(page.locator('body')).not.toContainText('Worked example');
+  await expect(page.getByRole('heading', { name: 'My statement' })).toBeVisible();
 });
 
 test('table sorts and expands with the keyboard', async ({ page }) => {

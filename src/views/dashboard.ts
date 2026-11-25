@@ -2,15 +2,16 @@ import { gsap } from 'gsap';
 import { config } from '../config';
 import { copy, fill } from '../copy';
 import { loadCoins } from '../lib/coins';
-import { dateOnly, int, short, sol, usdCompact } from '../lib/format';
+import { dateOnly, int, sol, usdCompact } from '../lib/format';
 import { payrollSummary, type PayrollSummary } from '../lib/payroll';
 import { lamportsToSol } from '../lib/rule';
 import { nextPayday, splitDuration } from '../lib/time';
-import { countUp, h, reduced } from '../lib/ui';
+import { countUp, drawBars, h, reduced } from '../lib/ui';
 import * as wallet from '../lib/wallet';
 import { createPrinter, type Slip } from './payslip';
 import { mountTable } from './table';
-import { mountTryRule } from './tryrule';
+import { mountHolders } from './holders';
+import { openConnect } from '../shell';
 import { bookTable } from './book';
 import { howSection } from './how';
 import { statementSlips } from './statement';
@@ -25,29 +26,73 @@ const RULE_FIGURES = [
   '0',
 ];
 
+function exampleSection(): string {
+  const e = copy.dashboard.example;
+  const total = e.rows.reduce((a, [, t, days]) => a + t * days, 0);
+  const rows = e.rows.map(([w, t, days]) => {
+    const pts = t * days;
+    const share = pts / total;
+    return `<tr>
+      <td><b>${w}</b></td>
+      <td class="num">${int(t)}</td>
+      <td class="num">${days}</td>
+      <td class="num">${int(pts)}</td>
+      <td><span class="share"><span class="bar"><i style="width:${(share * 100).toFixed(1)}%"></i></span><span class="num">${(share * 100).toFixed(1)}%</span></span></td>
+      <td class="num pos"><b>${sol(share * e.poolValue)} SOL</b></td>
+    </tr>`;
+  });
+  return `<section class="section example" id="example" aria-labelledby="ex-h">
+    <h2 id="ex-h">${e.heading}</h2>
+    <p class="lede">${e.lede}</p>
+    <div class="data-wrap"><table class="data ex-t">
+      <caption class="ex-cap">${e.pool}: <b class="num">${e.poolValue} SOL</b></caption>
+      <thead><tr><th>${e.cols.wallet}</th><th>${e.cols.tokens}</th><th>${e.cols.days}</th><th>${e.cols.points}</th><th>${e.cols.share}</th><th>${e.cols.pay}</th></tr></thead>
+      <tbody>${rows.join('')}</tbody>
+    </table></div>
+    <p class="note ex-note">${e.note}</p>
+  </section>`;
+}
+
 export default function dashboard(root: HTMLElement) {
   const d = copy.dashboard;
   const page = h(`<div>
     <div class="wrap">
       <div class="head">
-        <div>
+        <div class="head-copy">
           <h1>${d.h1}</h1>
           <p class="sub">${d.sub}</p>
+          <p class="cta-row">
+            <a class="btn btn-primary" href="#/launch">${d.ctaLaunch}</a>
+            <a class="btn btn-ghost" href="#/" data-scroll="how">${d.ctaHow}</a>
+            <a class="btn btn-ghost" href="#/" data-scroll="coins">${d.ctaCoins}</a>
+          </p>
         </div>
-        <div data-payday></div>
+        <div class="head-side">
+          <div data-payday></div>
+          <dl class="glance">
+            ${d.glance.map(([k, v]) => `<div><dt>${k}</dt><dd>${v}</dd></div>`).join('')}
+          </dl>
+        </div>
       </div>
-      <div class="tiles" data-tiles>${'<div class="tile"><span class="k">&nbsp;</span><span class="v">&nbsp;</span></div>'.repeat(4)}</div>
-      <div class="main">
-        <div data-table><div class="panel" style="min-height:${56 * 10 + 120}px"></div></div>
-        <aside class="side" data-side></aside>
-      </div>
+      <div data-how></div>
+      ${exampleSection()}
+      <section class="section" id="coins" aria-labelledby="coins-h">
+        <h2 id="coins-h">${d.coinsHeading}</h2>
+        <p class="lede">${d.coinsLede}</p>
+        <div class="tiles" data-tiles>${'<div class="tile"><span class="k">&nbsp;</span><span class="v">&nbsp;</span></div>'.repeat(4)}</div>
+        <div class="main">
+          <div data-table><div class="panel" style="min-height:${56 * 10 + 120}px"></div></div>
+          <aside class="side" data-side></aside>
+        </div>
+      </section>
     </div>
     <div class="band rules-band">
       <div class="wrap">
+        <h2 class="band-h">${d.rulesHeading}</h2>
         <p class="formula" aria-label="${copy.payroll.rules[0][0]}: ${copy.payroll.rules[0][1]}">
           <span class="f-term">${copy.payroll.rules[0][0]}</span><span class="f-op">=</span>
           <span class="f-chip">${copy.statement.lines.counted}</span><span class="f-op">×</span>
-          <span class="f-chip">${copy.rule.inputs.days}</span>
+          <span class="f-chip">${copy.rule.days}</span>
         </p>
         <div class="rules-grid">
           ${copy.payroll.rules
@@ -63,37 +108,58 @@ export default function dashboard(root: HTMLElement) {
         <p class="lede">${copy.book.lede}</p>
         <div data-book></div>
       </section>
-      <div data-how></div>
     </div>
   </div>`);
   root.append(page);
 
+  page.querySelectorAll<HTMLAnchorElement>('[data-scroll]').forEach((a) =>
+    a.addEventListener('click', (e) => {
+      e.preventDefault();
+      const t = page.querySelector(`#${a.dataset.scroll}`);
+      t?.scrollIntoView({ behavior: reduced() ? 'auto' : 'smooth', block: 'start' });
+    }),
+  );
+
   animateRules(page.querySelector('.rules-band') as HTMLElement);
+  drawBars(page.querySelector('.example') as HTMLElement);
   const stopClock = mountPayday(page.querySelector('[data-payday]')!);
 
-  // Right column: Try the rule + the payslip printer.
+  // Right column: current holders, then the payslip. The payslip prints when a wallet connects
+  // or when a holder row on a payroll coin is clicked; until then a connect prompt sits in its place.
   const side = page.querySelector('[data-side]') as HTMLElement;
+  const holdersHost = h('<div><div class="panel rule-card" style="min-height:420px"></div></div>');
+  const idle = h(`<section class="panel rule-card" aria-labelledby="slip-h">
+    <h2 id="slip-h">${copy.statement.heading}</h2>
+    <p class="lede" data-idle>${copy.statement.notConnected}</p>
+    <div class="rel" style="margin-top:14px"><button class="btn btn-primary" type="button">${copy.nav.connect}</button></div>
+  </section>`);
   const printer = createPrinter(document.createElement('div'));
-  let walletSlip = false;
-  mountTryRule(side, (slip: Slip, fromUser) => {
-    if (walletSlip && !fromUser) return;
-    walletSlip = false;
-    printer.print(slip);
-  });
-  side.append(printer.el);
+  printer.el.hidden = true;
+  side.append(holdersHost, idle, printer.el);
+  const printSlip = (slip: Slip, force = false) => {
+    idle.hidden = true;
+    printer.el.hidden = false;
+    printer.print(slip, force);
+  };
+  const connectBtn = idle.querySelector('button') as HTMLButtonElement;
+  connectBtn.addEventListener('click', () => openConnect(connectBtn.parentElement as HTMLElement, connectBtn));
 
   const unsub = wallet.subscribe(async (acc) => {
-    if (!acc) return;
-    const slips = await statementSlips(acc.address);
-    if (slips?.length) {
-      walletSlip = true;
-      printer.print(slips[0], true);
-    } else {
-      printer.print({ ...lastTry(side), title: short(acc.address) }, true);
+    const line = idle.querySelector('[data-idle]') as HTMLElement;
+    if (!acc) {
+      idle.hidden = false;
+      printer.el.hidden = true;
+      connectBtn.parentElement!.hidden = false;
+      line.textContent = copy.statement.notConnected;
+      return;
     }
+    connectBtn.parentElement!.hidden = true;
+    const slips = await statementSlips(acc.address);
+    if (slips?.length) printSlip(slips[0], true);
+    else line.textContent = copy.statement.nothing;
   });
 
-  page.querySelector('[data-how]')!.append(howSection());
+  page.querySelector('[data-how]')!.append(howSection(false, copy.dashboard.howLede));
 
   let stopTable: void | (() => void);
   Promise.all([loadCoins(), payrollSummary()]).then(([coins, summary]) => {
@@ -102,7 +168,9 @@ export default function dashboard(root: HTMLElement) {
     const host = page.querySelector('[data-table]') as HTMLElement;
     host.innerHTML = '';
     stopTable = mountTable(host, coins.rows, summary, live ? 'all' : 'market');
-    page.querySelector('[data-pool]')!.textContent = `${sol(lamportsToSol(summary.poolLamports))} SOL`;
+    holdersHost.innerHTML = '';
+    mountHolders(holdersHost, coins.rows, summary, (slip) => printSlip(slip, true));
+    page.querySelector('[data-pool]')!.textContent = `${sol(config.pool_override_sol ?? lamportsToSol(summary.poolLamports))} SOL`;
     const bookEl = page.querySelector('[data-book]') as HTMLElement;
     bookEl.append(bookTable(summary.runs.slice(0, 5)));
     animateLedger(bookEl);
@@ -112,23 +180,6 @@ export default function dashboard(root: HTMLElement) {
     stopClock();
     unsub();
     if (typeof stopTable === 'function') stopTable();
-  };
-}
-
-function lastTry(side: HTMLElement): Slip {
-  const lines = Array.from(side.querySelectorAll('.slip-line:not(.total)')).map(
-    (l) => [l.children[0].textContent ?? '', l.children[1].textContent ?? ''] as [string, string],
-  );
-  const total = side.querySelector('.slip-line.total');
-  return {
-    title: '',
-    sub: copy.rule.caption,
-    lines,
-    total: {
-      label: copy.statement.lines.expected,
-      note: copy.statement.lines.expectedNote,
-      value: total?.children[1].textContent ?? '',
-    },
   };
 }
 
@@ -180,7 +231,7 @@ function mountPayday(host: HTMLElement) {
       ${(['d', 'h', 'm', 's'] as const).map((u) => `<span class="unit" data-u="${u}"><span class="digits"></span><small>${p.units[u]}</small></span>`).join('')}
     </div>
     <p class="sr-only">${fill(copy.ui.countdownAlt, { date: payday.toLocaleString('en-GB', { timeZone: config.payday.tz, weekday: 'long', day: 'numeric', month: 'long', hour: '2-digit', minute: '2-digit' }) })}</p>
-    <div class="pool"><span>${p.pool} <b class="num" data-pool>0.00 SOL</b></span><a href="#/how">${p.howLink}</a></div>
+    <div class="pool"><span>${p.pool} <b class="num" data-pool>${sol(config.pool_override_sol ?? 0)} SOL</b></span><a href="#/how">${p.howLink}</a></div>
   </div>`);
   host.append(el);
 

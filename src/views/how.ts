@@ -8,7 +8,7 @@ import { animateHow } from '../lib/reveal';
 
 const STEP_ICONS = [icons.launch, icons.hold, icons.payday, icons.reset];
 
-export function howSection(asPage = false): HTMLElement {
+export function howSection(asPage = false, lede = ''): HTMLElement {
   const w = copy.how;
   const Tag = asPage ? 'h1' : 'h2';
   const steps = w.steps
@@ -31,6 +31,7 @@ export function howSection(asPage = false): HTMLElement {
     : `<p class="how-more"><a class="btn btn-ghost" href="#/how/faq">${copy.help.tabs.faq}</a><a class="btn btn-ghost" href="#/how/docs">${copy.help.tabs.docs}</a></p>`;
   const el = h(`<section class="section how" id="how" aria-labelledby="how-h">
     <${Tag} id="how-h">${w.heading}</${Tag}>
+    ${lede ? `<p class="lede">${lede}</p>` : ''}
     <ol class="steps">${steps}</ol>
     <div class="how-foot">
       ${split}
@@ -87,14 +88,6 @@ function faqSection(): HTMLElement {
 
 function docsSection(): HTMLElement {
   const c = copy.help;
-  const files: Record<string, string> = {
-    'registry.json': `./data/${config.dataDir}registry.json`,
-    'payroll/<date>.json': `./data/${config.dataDir}payroll/index.json`,
-  };
-  const link = (line: string) => {
-    const f = Object.keys(files).find((k) => line.startsWith(k));
-    return f ? `${esc(line)} <a href="${files[f]}" target="_blank" rel="noopener">${c.dataLink}</a>` : esc(line);
-  };
   return h(`<section class="section help-docs" id="docs" aria-labelledby="docs-h">
     <h2 id="docs-h">${c.docsHeading}</h2>
     <p class="lede">${c.docsLede}</p>
@@ -108,7 +101,7 @@ function docsSection(): HTMLElement {
           .map(
             (d) => `<article class="doc" id="doc-${d.id}">
               <h3>${d.title}</h3>
-              <ul>${d.body.map((b) => `<li>${link(b)}</li>`).join('')}</ul>
+              <ul>${d.body.map((b) => `<li>${esc(b)}</li>`).join('')}</ul>
             </article>`,
           )
           .join('')}

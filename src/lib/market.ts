@@ -14,6 +14,8 @@ export interface MarketRow {
   marketCap: number | null;
   volume24: number | null;
   liquidityUsd: number | null;
+  /** When the deepest pair was created (ms since epoch), from DexScreener. */
+  createdAt: number | null;
   spark: number[] | null;
 }
 
@@ -29,6 +31,7 @@ interface DexPair {
   liquidity?: { usd?: number };
   marketCap?: number;
   fdv?: number;
+  pairCreatedAt?: number;
   info?: { imageUrl?: string };
 }
 
@@ -67,6 +70,7 @@ export async function fetchMarket(mints: string[], signal?: AbortSignal): Promis
         marketCap: p.marketCap ?? p.fdv ?? null,
         volume24: p.volume?.h24 ?? null,
         liquidityUsd: liq,
+        createdAt: p.pairCreatedAt ?? null,
         spark: null,
       });
     }
@@ -84,4 +88,13 @@ export async function fetchSpark(pairAddress: string, signal?: AbortSignal): Pro
     .slice()
     .sort((a, b) => a[0] - b[0])
     .map((c) => c[4]);
+}
+
+/** Daily candles, oldest first: [time(s), open, high, low, close, volume]. */
+export async function fetchDaily(pairAddress: string, days: number, signal?: AbortSignal): Promise<number[][]> {
+  const r = await j<{ data: { attributes: { ohlcv_list: number[][] } } }>(
+    `${GT}/networks/solana/pools/${pairAddress}/ohlcv/day?aggregate=1&limit=${days}&currency=usd`,
+    signal,
+  );
+  return r.data.attributes.ohlcv_list.slice().sort((a, b) => a[0] - b[0]);
 }

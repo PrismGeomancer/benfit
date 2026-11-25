@@ -3,6 +3,7 @@ import { gsap } from 'gsap';
 import { Flip } from 'gsap/Flip';
 import { copy } from './copy';
 import { mountShell, setActiveNav } from './shell';
+import { playIntro } from './intro';
 
 gsap.registerPlugin(Flip);
 
@@ -39,3 +40,5 @@ async function route() {
 
 window.addEventListener('hashchange', route);
 route();
+// Only the home route opens with the intro.
+if (!location.hash || location.hash === '#/') playIntro();

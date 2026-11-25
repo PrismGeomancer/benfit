@@ -78,9 +78,8 @@ const net = networks[network];
 
 export const config = {
   network,
-  x_url: 'https://x.com/Spinoff_project',
+  x_url: 'https://x.com/BENFIT_PAD',
   telegram_url: '',
-  repo_url: 'https://github.com/PrismGeomancer/benfit',
   // GitHub Pages address; becomes live after the first deploy workflow run.
   site_url: 'https://prismgeomancer.github.io/benfit/',
   benfit_ca: '',
@@ -97,6 +96,10 @@ export const config = {
   // ASSUMPTION for market-view estimates: share of 24h volume that would reach payroll as fees.
   // The BENFIT config (scripts/create-config.ts) sets a 1% base fee; Meteora keeps 20%, so 0.8%.
   fee_rate: 0.008,
+
+  // "Pool this week" shown on the payday card. null = the real figure from data/fees.
+  // Set by the owner (fun project, 2026-11-14).
+  pool_override_sol: 12 as number | null,
 
   wallet_cap_pct: 1,
   min_tokens: 100_000,

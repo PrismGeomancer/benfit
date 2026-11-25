@@ -157,7 +157,7 @@ export function mountTable(host: HTMLElement, rows: CoinRow[], summary: PayrollS
     el.querySelector('table')!.classList.toggle('no-badges', mode !== 'all');
     el.querySelector('table')!.classList.toggle('no-holders', mode === 'market');
     empty.hidden = list.length > 0;
-    empty.textContent = list.length ? '' : t.emptySearch;
+    empty.textContent = list.length ? '' : mode === 'payroll' && !query.trim() ? t.emptyPayroll : t.emptySearch;
     el.querySelectorAll<HTMLButtonElement>('[data-mode]').forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.mode === mode)));
     el.querySelectorAll<HTMLElement>('th[data-key]').forEach((thEl) => {
       const on = thEl.dataset.key === sort.key;

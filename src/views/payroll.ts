@@ -34,7 +34,7 @@ export default function payroll(root: HTMLElement) {
 
   payrollSummary().then((s) => {
     set('snapshot', s.lastSnapshot ? dateTime(s.lastSnapshot) : '–');
-    set('pool', `${sol(lamportsToSol(s.poolLamports), 3)} SOL`);
+    set('pool', `${sol(config.pool_override_sol ?? lamportsToSol(s.poolLamports), 3)} SOL`);
     // Points are in base units × days; divide by 10^decimals (6 for BENFIT coins) for token-days.
     set('points', s.pointsTotal > 0n ? compactNum(Number(s.pointsTotal / 10n ** 6n)) : '0');
     set('owed', `${sol(lamportsToSol(s.owedLamports), 3)} SOL`);
@@ -58,7 +58,7 @@ export function coinHolders(c: CoinPayroll): HTMLElement {
   return h(`<section style="margin-top:32px">
     <h2 style="font-size:var(--f20)"><a href="#/coin/${c.coin.mint}">$${c.coin.ticker}</a></h2>
     <div class="data-wrap"><table class="data">
-      <thead><tr><th scope="col">${copy.rule.cols.holder}</th><th scope="col">${t.counted}</th><th scope="col">${t.tenure}</th><th scope="col">${t.points}</th><th scope="col">${t.expected}</th></tr></thead>
+      <thead><tr><th scope="col">${copy.holders.cols.holder}</th><th scope="col">${t.counted}</th><th scope="col">${t.tenure}</th><th scope="col">${t.points}</th><th scope="col">${t.expected}</th></tr></thead>
       <tbody>${rows
         .slice(0, 200)
         .map(
