@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-11-26T23:48:41.773Z",
+  "fetchedAt": "2026-11-27T08:14:40.702Z",
   "rows": [
     {
       "mint": "4kjruqGHDsSqkMdFfCjV7Vb62HPFhtXyWc2t6JpQzDnz",
@@ -9,20 +9,20 @@
       "pairAddress": "FDamUzyiEA7Cq1VNiQcbhuHpfCmmcJfgA6DwQQ1hhLd2",
       "dexId": "raydium",
       "quoteSymbol": "TTWO",
-      "priceUsd": 0.002019,
-      "change24": -8.63,
-      "marketCap": 2019115,
-      "volume24": 126158.34,
-      "liquidityUsd": 190349.17,
+      "priceUsd": 0.002015,
+      "change24": -1.44,
+      "marketCap": 2015937,
+      "volume24": 74416.96,
+      "liquidityUsd": 191431.89,
       "createdAt": 1786023355000,
       "spark": [
-        212.16828489015805,
         213.49040987611744,
         210.44334720121478,
         208.9626913548352,
         219.19563324728733,
         225.4762743429748,
-        224.50535336095083
+        223.44931197145166,
+        228.68338496138153
       ]
     },
     {
@@ -33,20 +33,20 @@
       "pairAddress": "Ho1aSG6WGH1FfXdEHrK2f4Ggt1Hoxo9s5jcLMDqeyeBz",
       "dexId": "pumpswap",
       "quoteSymbol": "SOL",
-      "priceUsd": 0.005531,
-      "change24": 17.89,
-      "marketCap": 5203953,
-      "volume24": 831269.2,
-      "liquidityUsd": 292954.61,
+      "priceUsd": 0.006125,
+      "change24": 29.85,
+      "marketCap": 5763164,
+      "volume24": 1024747.89,
+      "liquidityUsd": 314074.7,
       "createdAt": 1792946594000,
       "spark": [
-        0.006859687827784437,
         0.008043155192558321,
         0.00867528629980098,
         0.007622385514441013,
         0.005211578632828412,
         0.004680184641514756,
-        0.005603575454060034
+        0.005561953443996759,
+        0.0061237518646036935
       ]
     },
     {
@@ -57,20 +57,20 @@
       "pairAddress": "Gz15vwSPY9KFYNkrMPkoKp2h9yygVBovoXJsGwSJcvFk",
       "dexId": "pumpswap",
       "quoteSymbol": "SOL",
-      "priceUsd": 0.000006147,
-      "change24": -41.63,
-      "marketCap": 6060,
-      "volume24": 1768.34,
-      "liquidityUsd": 5544.93,
+      "priceUsd": 0.0000063,
+      "change24": -39.46,
+      "marketCap": 6211,
+      "volume24": 1827.76,
+      "liquidityUsd": 5691.57,
       "createdAt": 1793717354000,
       "spark": [
-        0.01277164579875181,
         0.00010707469592481812,
         0.000010141009877299069,
         0.000010379243315617668,
         0.000010152568834902987,
         0.00001047222393121285,
-        0.000006157155282309923
+        0.000006054047717255623,
+        0.000006279344234482879
       ]
     },
     {
@@ -81,20 +81,20 @@
       "pairAddress": "FJk9sajdc2Q4heRPPu3yLzkmf2ZByZkpiHQLv9e2bn5A",
       "dexId": "raydium",
       "quoteSymbol": "SOL",
-      "priceUsd": 0.003106,
-      "change24": 30.25,
-      "marketCap": 3103561,
-      "volume24": 326164.35,
-      "liquidityUsd": 304431.8,
+      "priceUsd": 0.003197,
+      "change24": 9.23,
+      "marketCap": 3193989,
+      "volume24": 164735.75,
+      "liquidityUsd": 314415.22,
       "createdAt": 1793225743000,
       "spark": [
-        0.0031716693066856393,
         0.003086606821404437,
         0.003815691180159428,
         0.002620659587059209,
         0.0027467512056842495,
         0.002363569892052568,
-        0.0030563120390465414
+        0.003030960858301342,
+        0.003129108830494116
       ]
     },
     {
@@ -105,20 +105,20 @@
       "pairAddress": "Eoe22HdCa9rhtBwKL6nNZmZxfuzF35xkxobcvfaF1vWQ",
       "dexId": "pumpswap",
       "quoteSymbol": "SOL",
-      "priceUsd": 0.0004831,
-      "change24": 22.46,
-      "marketCap": 481866,
-      "volume24": 97871.46,
-      "liquidityUsd": 94959.67,
+      "priceUsd": 0.000425,
+      "change24": -23.72,
+      "marketCap": 423929,
+      "volume24": 81993.87,
+      "liquidityUsd": 90453.51,
       "createdAt": 1794430829000,
       "spark": [
-        0.0005946400296030163,
         0.0006441067609776027,
         0.0004749396699873714,
         0.0003572188678889597,
         0.00036037735251229073,
         0.00039555345411388613,
-        0.0004836581192895209
+        0.0004874092578459965,
+        0.0004162015342365483
       ]
     },
     {
@@ -130,9 +130,9 @@
       "dexId": "pumpswap",
       "quoteSymbol": "SOL",
       "priceUsd": 0.00000252,
-      "change24": -0.53,
+      "change24": 0.57,
       "marketCap": 2512,
-      "volume24": 0.64,
+      "volume24": 0.6,
       "liquidityUsd": 3236.32,
       "createdAt": 1794478577000,
       "spark": [
@@ -153,20 +153,20 @@
       "pairAddress": "2XhQqp1vDVxtaa21bPsekQF5gjts9euqRPSZ6Urs41qk",
       "dexId": "pumpswap",
       "quoteSymbol": "SOL",
-      "priceUsd": 0.00005682,
-      "change24": -20.69,
-      "marketCap": 55087,
-      "volume24": 47303.38,
-      "liquidityUsd": 23413.83,
+      "priceUsd": 0.00005647,
+      "change24": -16.21,
+      "marketCap": 54749,
+      "volume24": 23569.23,
+      "liquidityUsd": 23731.13,
       "createdAt": 1794525398000,
       "spark": [
-        0.00007733099198493908,
         0.00007236164969772034,
         0.00005515280651031318,
         0.00006580987595550165,
         0.00008231315512915197,
         0.00007192576560681217,
-        0.00005686391110563641
+        0.00005793704700181818,
+        0.00005685982659272618
       ]
     },
     {
@@ -177,20 +177,20 @@
       "pairAddress": "B4Wmjc6PvjCtU3qSVS3eTT9Mr4M5V5jBkRQctWANTc71",
       "dexId": "pumpswap",
       "quoteSymbol": "SOL",
-      "priceUsd": 0.0009502,
-      "change24": -14.9,
-      "marketCap": 905340,
-      "volume24": 150346.42,
-      "liquidityUsd": 115527.39,
+      "priceUsd": 0.0009554,
+      "change24": -15.68,
+      "marketCap": 910377,
+      "volume24": 138001.88,
+      "liquidityUsd": 117757.68,
       "createdAt": 1792598306000,
       "spark": [
-        0.001515133686903033,
         0.0011762276994963616,
         0.0012887929438022726,
         0.0012019736124827605,
         0.0013079759900550224,
         0.001121029726066576,
-        0.0009377219470639095
+        0.0009595361175249689,
+        0.0009480557919381452
       ]
     },
     {
@@ -201,20 +201,20 @@
       "pairAddress": "2rmaFtFZmJtLXdPgRvk417RLc9GBD3jGbAqtttmfG3AF",
       "dexId": "pumpswap",
       "quoteSymbol": "SOL",
-      "priceUsd": 0.0003222,
-      "change24": -21.28,
-      "marketCap": 308920,
-      "volume24": 49547.09,
-      "liquidityUsd": 58734.25,
+      "priceUsd": 0.0003437,
+      "change24": -0.35,
+      "marketCap": 329613,
+      "volume24": 43129.18,
+      "liquidityUsd": 61667.68,
       "createdAt": 1793074425000,
       "spark": [
-        0.0005322849331010559,
         0.000712025971347503,
         0.0005185839113238199,
         0.0004525442826490233,
         0.0003104819933652597,
         0.0004064325080029173,
-        0.0003200387680819888
+        0.00031499898423974367,
+        0.00034434470408918714
       ]
     },
     {
@@ -225,20 +225,20 @@
       "pairAddress": "5n8V68fCaNTRQvaXzrmBryDe5jFLrgm65pFfsmia6Nro",
       "dexId": "pumpswap",
       "quoteSymbol": "SOL",
-      "priceUsd": 0.00006989,
-      "change24": -5.24,
-      "marketCap": 69413,
-      "volume24": 7008.89,
-      "liquidityUsd": 22160.05,
+      "priceUsd": 0.00007538,
+      "change24": 8.41,
+      "marketCap": 74860,
+      "volume24": 9236.29,
+      "liquidityUsd": 23359.07,
       "createdAt": 1793891073000,
       "spark": [
-        0.00024100816772863965,
         0.00010004790923979489,
         0.00009453066514649025,
         0.00008997739448745492,
         0.00010100987584211187,
         0.00007328860028771181,
-        0.00007002148227659199
+        0.00007138684742530636,
+        0.00007571024342803769
       ]
     },
     {
@@ -249,20 +249,20 @@
       "pairAddress": "FJ1Y3drK5Z715mj8Hk512ekk3rQhTAhgRv6HMhnPCN2u",
       "dexId": "pumpswap",
       "quoteSymbol": "SOL",
-      "priceUsd": 0.00001183,
-      "change24": -18.18,
-      "marketCap": 11379,
-      "volume24": 1506.82,
-      "liquidityUsd": 8491.53,
+      "priceUsd": 0.00001234,
+      "change24": -7.58,
+      "marketCap": 11867,
+      "volume24": 1236.61,
+      "liquidityUsd": 8801.27,
       "createdAt": 1794493989000,
       "spark": [
-        0.000020396605337166937,
         0.00001712517407486968,
         0.000018034024023525326,
         0.000023764040239762502,
         0.000020524851526426003,
         0.000014508311529235152,
-        0.000011755536273944151
+        0.000011592778366531343,
+        0.000012272094948482789
       ]
     },
     {
@@ -273,20 +273,20 @@
       "pairAddress": "DBzwWtsvwYDEf8SG8ypHdTKWdRL3WEvH1qDtwgx9DnqX",
       "dexId": "pumpswap",
       "quoteSymbol": "SOL",
-      "priceUsd": 0.000006704,
-      "change24": -10.23,
-      "marketCap": 6654,
-      "volume24": 174.67,
-      "liquidityUsd": 4673.42,
+      "priceUsd": 0.000006902,
+      "change24": -5.39,
+      "marketCap": 6851,
+      "volume24": 152.39,
+      "liquidityUsd": 4814.9,
       "createdAt": 1794502442000,
       "spark": [
-        0.000006614588019500682,
         0.000008192040774447524,
         0.000008219537004164649,
         0.000007022531077518051,
         0.000006573025771374054,
         0.000007420752359741106,
-        0.000006712264409835307
+        0.000006712264409835307,
+        0.000006901540112622604
       ]
     },
     {
@@ -297,20 +297,20 @@
       "pairAddress": "GxYbNxjGR9mEuVzXsGBi2Y78RGkwBMRok4RS9sMUb8hE",
       "dexId": "pumpswap",
       "quoteSymbol": "SOL",
-      "priceUsd": 0.00006965,
-      "change24": 11.09,
-      "marketCap": 66447,
-      "volume24": 40695.59,
-      "liquidityUsd": 22512.92,
+      "priceUsd": 0.0000624,
+      "change24": 4.74,
+      "marketCap": 59539,
+      "volume24": 28673.56,
+      "liquidityUsd": 21591.73,
       "createdAt": 1792259749000,
       "spark": [
-        0.00027536179293283106,
         0.00039102925077554463,
         0.0003078712803165847,
         0.00030263940980779707,
         0.00017512854336949974,
         0.00006317139316335759,
-        0.00006749922277987771
+        0.00006882311664580895,
+        0.00006185632811427833
       ]
     }
   ]
